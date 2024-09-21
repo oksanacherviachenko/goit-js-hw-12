@@ -32,3 +32,10 @@
 .info p {
   margin: 5px 0;
 }
+
+#loader {
+  font-size: 18px;
+  text-align: center;
+  margin-top: 20px;
+  color: #333;
+}

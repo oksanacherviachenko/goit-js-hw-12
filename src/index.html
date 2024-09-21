@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vanilla App Template</title>
+    <title>Image Search App</title>
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
@@ -13,7 +13,6 @@
     </header>
 
     <main>
-      <!-- Форма пошуку -->
       <section class="search-section">
         <form id="searchForm">
           <label for="searchInput">Search for images:</label>
@@ -27,15 +26,15 @@
         </form>
       </section>
 
-      <!-- Галерея зображень -->
-      <section class="gallery" id="gallery">
-        <!-- Тут будуть відображатись результати -->
-      </section>
+      <div id="loader" style="display: none">Loading...</div>
+
+      <section class="gallery" id="gallery"></section>
     </main>
 
     <footer>
       <p>&copy; 2024 Image Search App</p>
     </footer>
+
     <script type="module" src="./js/pixabay-api.js"></script>
     <script type="module" src="./js/render-functions.js"></script>
     <script type="module" src="./main.js"></script>

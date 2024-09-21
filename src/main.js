@@ -5,6 +5,7 @@ import 'izitoast/dist/css/iziToast.min.css';
 
 const form = document.getElementById('searchForm');
 const gallery = document.getElementById('gallery');
+const loader = document.getElementById('loader'); 
 
 form.addEventListener('submit', async function (event) {
   event.preventDefault(); 
@@ -20,20 +21,32 @@ form.addEventListener('submit', async function (event) {
     return;
   }
 
-  const images = await fetchImages(query);
+  loader.style.display = 'block';
 
-  if (images.length > 0) {
-    renderGallery(images, gallery);
-    iziToast.success({
-      title: 'Success',
-      message: `Found ${images.length} images for "${query}"`,
-      position: 'topRight',
-    });
-  } else {
+  try {
+    const images = await fetchImages(query);
+
+    if (images.length > 0) {
+      renderGallery(images, gallery);
+      iziToast.success({
+        title: 'Success',
+        message: `Found ${images.length} images for "${query}"`,
+        position: 'topRight',
+      });
+    } else {
+      iziToast.error({
+        title: 'Error',
+        message: 'Sorry, there are no images matching your search query. Please try again!',
+        position: 'topRight',
+      });
+    }
+  } catch (error) {
     iziToast.error({
       title: 'Error',
-      message: 'Sorry, there are no images matching your search query. Please try again!',
+      message: error.message,
       position: 'topRight',
     });
+  } finally {
+    loader.style.display = 'none';
   }
 });
