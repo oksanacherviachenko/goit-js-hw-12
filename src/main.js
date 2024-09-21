@@ -5,7 +5,7 @@ import 'izitoast/dist/css/iziToast.min.css';
 
 const form = document.getElementById('searchForm');
 const gallery = document.getElementById('gallery');
-const loader = document.getElementById('loader'); 
+const loaderContainer = document.getElementById('loader-container'); 
 
 form.addEventListener('submit', async function (event) {
   event.preventDefault(); 
@@ -21,7 +21,7 @@ form.addEventListener('submit', async function (event) {
     return;
   }
 
-  loader.style.display = 'block';
+  loaderContainer.style.display = 'block';
 
   try {
     const images = await fetchImages(query);
@@ -47,6 +47,6 @@ form.addEventListener('submit', async function (event) {
       position: 'topRight',
     });
   } finally {
-    loader.style.display = 'none';
+    loaderContainer.style.display = 'none';
   }
 });
