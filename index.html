@@ -4,11 +4,11 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/goit-js-hw-11/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vanilla App Template</title>
+    <title>Image Search App</title>
     <script type="module" crossorigin src="/goit-js-hw-11/index.js"></script>
-    <link rel="modulepreload" crossorigin href="/goit-js-hw-11/assets/vendor-I1I71QQ2.js">
-    <link rel="stylesheet" crossorigin href="/goit-js-hw-11/assets/vendor-DnveWo0P.css">
-    <link rel="stylesheet" crossorigin href="/goit-js-hw-11/assets/index-Ct7v0jGC.css">
+    <link rel="modulepreload" crossorigin href="/goit-js-hw-11/assets/vendor-BrddEoy-.js">
+    <link rel="stylesheet" crossorigin href="/goit-js-hw-11/assets/vendor-CWKLx11g.css">
+    <link rel="stylesheet" crossorigin href="/goit-js-hw-11/assets/index-BDSDiG9r.css">
   </head>
   <body>
     <header>
@@ -16,7 +16,6 @@
     </header>
 
     <main>
-      <!-- Форма пошуку -->
       <section class="search-section">
         <form id="searchForm">
           <label for="searchInput">Search for images:</label>
@@ -30,14 +29,14 @@
         </form>
       </section>
 
-      <!-- Галерея зображень -->
-      <section class="gallery" id="gallery">
-        <!-- Тут будуть відображатись результати -->
-      </section>
+      <div id="loader" style="display: none">Loading...</div>
+
+      <section class="gallery" id="gallery"></section>
     </main>
 
     <footer>
       <p>&copy; 2024 Image Search App</p>
     </footer>
+
   </body>
 </html>
