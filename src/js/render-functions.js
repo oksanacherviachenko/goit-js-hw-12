@@ -7,13 +7,15 @@ export function renderGallery(images, gallery) {
   gallery.innerHTML = ''; 
 
   const markup = images.map(image => `
-    <a href="${image.largeImageURL}" class="gallery__item" data-lightbox="image">
-      <img src="${image.webformatURL}" alt="${image.tags}" loading="lazy" />
-      <div class="info">
-        <p><b>Likes:</b> ${image.likes}</p>
-        <p><b>Views:</b> ${image.views}</p>
-        <p><b>Comments:</b> ${image.comments}</p>
-        <p><b>Downloads:</b> ${image.downloads}</p>
+    <a href="${image.largeImageURL}" class="gallery-link" data-lightbox="image">
+      <div class="gallery-item">
+        <img src="${image.webformatURL}" alt="${image.tags}" class="gallery-image" loading="lazy" />
+        <div class="info">
+          <p><b>Likes:</b> ${image.likes}</p>
+          <p><b>Views:</b> ${image.views}</p>
+          <p><b>Comments:</b> ${image.comments}</p>
+          <p><b>Downloads:</b> ${image.downloads}</p>
+        </div>
       </div>
     </a>
   `).join('');
@@ -23,7 +25,7 @@ export function renderGallery(images, gallery) {
   if (lightbox) {
     lightbox.refresh();
   } else {
-    lightbox = new SimpleLightbox('.gallery__item', {
+    lightbox = new SimpleLightbox('.gallery-link', {
       captionsData: 'alt',
       captionDelay: 250,
     });
