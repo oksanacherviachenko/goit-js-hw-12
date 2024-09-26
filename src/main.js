@@ -43,6 +43,18 @@ form.addEventListener('submit', async function (event) {
       totalHits = hits;
       loadedImagesCount = images.length;
       renderGallery(images, gallery);
+
+      // Плавне прокручування після завантаження нових зображень
+      setTimeout(() => {
+        const galleryItem = document.querySelector('.gallery-item');
+        const cardHeight = galleryItem.getBoundingClientRect().height;
+
+        window.scrollBy({
+          top: cardHeight * 2,
+          behavior: 'smooth'
+        });
+      }, 100); // Час затримки можна змінювати
+
       iziToast.success({
         title: 'Success',
         message: `Found ${totalHits} images for "${query}"`,
@@ -78,17 +90,19 @@ loadMoreBtn.addEventListener('click', async function () {
     const { images } = await fetchImages(query, page);
     
     if (images.length > 0) {
-      const previousHeight = gallery.getBoundingClientRect().height;
-
       loadedImagesCount += images.length;
       renderGallery(images, gallery);
 
-      const galleryItem = document.querySelector('.gallery-item');
-      const cardHeight = galleryItem.getBoundingClientRect().height;
-      window.scrollBy({
-        top: cardHeight * 2,
-        behavior: 'smooth'
-      });
+      // Плавне прокручування після завантаження нових зображень
+      setTimeout(() => {
+        const galleryItem = document.querySelector('.gallery-item');
+        const cardHeight = galleryItem.getBoundingClientRect().height;
+
+        window.scrollBy({
+          top: cardHeight * 2,
+          behavior: 'smooth'
+        });
+      }, 100); // Час затримки можна змінювати
 
       if (loadedImagesCount >= totalHits) {
         loadMoreBtn.style.display = 'none';
