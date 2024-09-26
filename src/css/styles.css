@@ -7,8 +7,115 @@
 /* Common styles */
 @import url('./reset.css');
 
-/*Styles for image cards*/
+/* Центрування заголовка і форми */
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+}
 
+.search-section {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+#searchForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#searchInput {
+  padding: 10px;
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 10px;
+}
+
+#searchForm button {
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#searchForm button:hover {
+  background-color: #2980b9;
+}
+
+/* Центрування кнопки "Load More" */
+#loadMoreBtn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  margin: 20px auto; /* Центрує кнопку */
+  display: block;
+}
+
+#loadMoreBtn:hover {
+  background-color: #2980b9;
+}
+
+#loadMoreBtn:active {
+  background-color: #1e6f9f;
+}
+
+/* Центрування основного контенту */
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Стилі для галереї */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(350px, 1fr)
+  ); /* Відновлення рядів по 3 зображення */
+  gap: 24px;
+  padding: 24px;
+  justify-items: center;
+  width: 100%; /* Вирівнювання галереї на всю ширину */
+  max-width: 1200px; /* Максимальна ширина для збереження макета */
+}
+
+.gallery-item {
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+  transform: scale(1.05);
+}
+
+.gallery-link {
+  display: block;
+}
+
+.gallery-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Стилі для карток зображень */
 .image-card {
   border: 1px solid #ccc;
   padding: 10px;
@@ -33,6 +140,7 @@
   margin: 5px 0;
 }
 
+/* Стилі для індикатора завантаження */
 .loader {
   font-size: 10px;
   width: 1em;
@@ -47,19 +155,19 @@
 @keyframes mulShdSpin {
   0%,
   100% {
-    box-shadow: 0em -2.6em 0em 0em #ffffff,
-      1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2),
-      2.5em 0em 0 0em rgba(255, 255, 255, 0.2),
-      1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2),
-      0em 2.5em 0 0em rgba(255, 255, 255, 0.2),
-      -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2),
-      -2.6em 0em 0 0em rgba(255, 255, 255, 0.5),
-      -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.7);
+    box-shadow: 0em -2.6em 0em 0ем #ffffff,
+      1.8em -1.8em 0 0ем rgba(255, 255, 255, 0.2),
+      2.5em 0ем 0 0ем rgba(255, 255, 255, 0.2),
+      1.75em 1.75em 0 0ем rgba(255, 255, 255, 0.2),
+      0ем 2.5ем 0 0ем rgba(255, 255, 255, 0.2),
+      -1.8ем 1.8ем 0 0ем rgba(255, 255, 255, 0.2),
+      -2.6ем 0ем 0 0ем rgba(255, 255, 255, 0.5),
+      -1.8ем -1.8ем 0 0ем rgba(255, 255, 255, 0.7);
   }
   12.5% {
-    box-shadow: 0em -2.6em 0ем 0ем rgba(255, 255, 255, 0.7),
-      1.8em -1.8em 0 0ем #ffffff, 2.5em 0ем 0 0ем rgba(255, 255, 255, 0.2),
-      1.75em 1.75em 0 0ем rgba(255, 255, 255, 0.2),
+    box-shadow: 0em -2.6ем 0ем 0ем rgba(255, 255, 255, 0.7),
+      1.8em -1.8em 0 0ем #ffffff, 2.5ем 0ем 0 0ем rgba(255, 255, 255, 0.2),
+      1.75em 1.75ем 0 0ем rgba(255, 255, 255, 0.2),
       0ем 2.5ем 0 0ем rgba(255, 255, 255, 0.2),
       -1.8ем 1.8ем 0 0ем rgba(255, 255, 255, 0.2),
       -2.6ем 0ем 0 0ем rgba(255, 255, 255, 0.2),
@@ -119,103 +227,4 @@
       -1.8ем 1.8ем 0 0ем rgba(255, 255, 255, 0.5),
       -2.6ем 0ем 0 0ем rgba(255, 255, 255, 0.7), -1.8ем -1.8ем 0 0ем #ffffff;
   }
-}
-
-/* Стилі для галереї */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 24px;
-  padding: 24px;
-  justify-items: center;
-}
-
-.gallery-item {
-  overflow: hidden;
-  transition: transform 0.3s ease;
-}
-
-.gallery-item:hover {
-  transform: scale(1.05);
-}
-
-.gallery-link {
-  display: block;
-}
-
-.gallery-image {
-  display: block;
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-
-#loadMoreBtn {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #3498db;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  text-align: center;
-  transition: background-color 0.3s ease;
-  margin: 20px auto;
-  display: block;
-}
-
-#loadMoreBtn:hover {
-  background-color: #2980b9;
-}
-
-#loadMoreBtn:active {
-  background-color: #1e6f9f;
-}
-
-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  margin: 20px 0;
-}
-
-.search-section {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
-
-#searchForm {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-#searchInput {
-  padding: 10px;
-  width: 100%;
-  max-width: 400px;
-  margin-bottom: 10px;
-}
-
-#searchForm button {
-  padding: 10px 20px;
-  background-color: #3498db;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-#searchForm button:hover {
-  background-color: #2980b9;
 }
