@@ -78,9 +78,18 @@ loadMoreBtn.addEventListener('click', async function () {
     const { images } = await fetchImages(query, page);
     
     if (images.length > 0) {
+      const previousHeight = gallery.getBoundingClientRect().height;
+
       loadedImagesCount += images.length;
       renderGallery(images, gallery);
-      
+
+      const galleryItem = document.querySelector('.gallery-item');
+      const cardHeight = galleryItem.getBoundingClientRect().height;
+      window.scrollBy({
+        top: cardHeight * 2,
+        behavior: 'smooth'
+      });
+
       if (loadedImagesCount >= totalHits) {
         loadMoreBtn.style.display = 'none';
         iziToast.info({
@@ -100,5 +109,4 @@ loadMoreBtn.addEventListener('click', async function () {
     loaderContainer.style.display = 'none';
   }
 });
-
 
