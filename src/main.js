@@ -31,7 +31,7 @@ form.addEventListener('submit', async function (event) {
 
   loadMoreBtn.style.display = 'none';
   page = 1;  
-  gallery.innerHTML = '';  
+  gallery.innerHTML = '';  // Очищуємо галерею при новому пошуку
   loadedImagesCount = 0;
 
   loaderContainer.style.display = 'block';
@@ -43,16 +43,6 @@ form.addEventListener('submit', async function (event) {
       totalHits = hits;
       loadedImagesCount = images.length;
       renderGallery(images, gallery);
-
-      setTimeout(() => {
-        const galleryItem = document.querySelector('.gallery-item');
-        const cardHeight = galleryItem.getBoundingClientRect().height;
-
-        window.scrollBy({
-          top: cardHeight * 2,
-          behavior: 'smooth'
-        });
-      }, 350); 
 
       iziToast.success({
         title: 'Success',
@@ -90,17 +80,7 @@ loadMoreBtn.addEventListener('click', async function () {
     
     if (images.length > 0) {
       loadedImagesCount += images.length;
-      renderGallery(images, gallery);
-
-      setTimeout(() => {
-        const galleryItem = document.querySelector('.gallery-item');
-        const cardHeight = galleryItem.getBoundingClientRect().height;
-
-        window.scrollBy({
-          top: cardHeight * 2,
-          behavior: 'smooth'
-        });
-      }, 350); 
+      renderGallery(images, gallery);  // Додаємо зображення, не очищуючи галерею
 
       if (loadedImagesCount >= totalHits) {
         loadMoreBtn.style.display = 'none';
@@ -121,4 +101,3 @@ loadMoreBtn.addEventListener('click', async function () {
     loaderContainer.style.display = 'none';
   }
 });
-

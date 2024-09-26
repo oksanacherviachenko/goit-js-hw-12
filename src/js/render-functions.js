@@ -4,8 +4,6 @@ import "simplelightbox/dist/simple-lightbox.min.css";
 let lightbox;
 
 export function renderGallery(images, gallery) {
-  gallery.innerHTML = ''; 
-
   const markup = images.map(image => `
     <a href="${image.largeImageURL}" class="gallery-link" data-lightbox="image">
       <div class="gallery-item">
@@ -32,7 +30,7 @@ export function renderGallery(images, gallery) {
     </a>
   `).join('');
 
-  gallery.insertAdjacentHTML('beforeend', markup);
+  gallery.insertAdjacentHTML('beforeend', markup);  
 
   if (lightbox) {
     lightbox.refresh();
@@ -43,3 +41,6 @@ export function renderGallery(images, gallery) {
     });
   }
 }
+
+
+
