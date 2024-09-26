@@ -13,11 +13,11 @@ export async function fetchImages(query, page = 1) {
       throw new Error('Sorry, there are no images matching your search query. Please try again!');
     }
 
-    return response.data.hits; 
+    return { images: response.data.hits, totalHits: response.data.totalHits }; 
   } catch (error) {
     console.error(error.message);
     alert(error.message);
-    return [];
+    return { images: [], totalHits: 0 };
   }
 }
 

@@ -10,6 +10,8 @@ const loadMoreBtn = document.getElementById('loadMoreBtn');
 
 let query = '';
 let page = 1;
+let totalHits = 0;
+let loadedImagesCount = 0;
 
 loadMoreBtn.style.display = 'none';
 
@@ -30,21 +32,26 @@ form.addEventListener('submit', async function (event) {
   loadMoreBtn.style.display = 'none';
   page = 1;  
   gallery.innerHTML = '';  
+  loadedImagesCount = 0;
 
   loaderContainer.style.display = 'block';
 
   try {
-    const images = await fetchImages(query, page);
+    const { images, totalHits: hits } = await fetchImages(query, page);
 
     if (images.length > 0) {
+      totalHits = hits;
+      loadedImagesCount = images.length;
       renderGallery(images, gallery);
       iziToast.success({
         title: 'Success',
-        message: `Found ${images.length} images for "${query}"`,
+        message: `Found ${totalHits} images for "${query}"`,
         position: 'topRight',
       });
       
-      loadMoreBtn.style.display = 'block';
+      if (loadedImagesCount < totalHits) {
+        loadMoreBtn.style.display = 'block';
+      }
     } else {
       iziToast.error({
         title: 'Error',
@@ -68,9 +75,20 @@ loadMoreBtn.addEventListener('click', async function () {
   loaderContainer.style.display = 'block';
 
   try {
-    const images = await fetchImages(query, page);
+    const { images } = await fetchImages(query, page);
+    
     if (images.length > 0) {
+      loadedImagesCount += images.length;
       renderGallery(images, gallery);
+      
+      if (loadedImagesCount >= totalHits) {
+        loadMoreBtn.style.display = 'none';
+        iziToast.info({
+          title: 'Info',
+          message: "We're sorry, but you've reached the end of search results.",
+          position: 'topRight',
+        });
+      }
     }
   } catch (error) {
     iziToast.error({
@@ -82,4 +100,5 @@ loadMoreBtn.addEventListener('click', async function () {
     loaderContainer.style.display = 'none';
   }
 });
+
 
