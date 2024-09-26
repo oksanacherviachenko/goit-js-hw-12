@@ -178,3 +178,44 @@ main {
   flex-direction: column;
   align-items: center;
 }
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.search-section {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+#searchForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#searchInput {
+  padding: 10px;
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 10px;
+}
+
+#searchForm button {
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#searchForm button:hover {
+  background-color: #2980b9;
+}
